@@ -1,0 +1,37 @@
+
+# Component Info
+info:
+  component: config-server
+
+# HTTP Server
+server:
+  port: 8888
+
+spring:
+  # Spring Cloud Config Server Repository
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/rmagalla/config-server
+        encrypt:
+          enabled: false
+
+
+  application:
+    name: config-server
+
+  # Spring properties
+    #profiles:
+    #active: dev
+management:
+  security:
+    enabled: false
+eureka:
+  instance:
+    instanceId: ${spring.application.name}:${server.port}
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1111/eureka/
+encrypt:
+  key: abcdefg
